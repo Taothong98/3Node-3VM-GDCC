@@ -1,0 +1,59 @@
+{
+  "server": {
+    "privateKey": "kL32I0a2gRN4+cn75E4eO68BA7VI6DjA19KFWz6qOWg=",
+    "publicKey": "4XhwHB6/nW3xTCVfiKrdUwlNRFipGRJOJj+oXKqAJHA=",
+    "address": "10.0.0.1"
+  },
+  "clients": {
+    "4c782a21-7405-4073-b2c9-cb61c1cef6f4": {
+      "name": "user1",
+      "address": "10.0.0.2",
+      "privateKey": "WIORP64aKy6DkLqWbBwgu1AK3g7hkhjbfozyBvIsMFk=",
+      "publicKey": "xBo/R8+mIcEz7FFE2RbYd11Wqc4S1rQVNzmnjMjhRAk=",
+      "preSharedKey": "Kg8BfRjJzwMNuZwc7hgroD8ovFpRCv89bmWp5UmO7Ho=",
+      "createdAt": "2024-09-24T04:01:48.181Z",
+      "updatedAt": "2024-09-24T04:01:48.181Z",
+      "enabled": true
+    },
+    "8fcf2054-0353-4b97-97d8-445ecb15d73c": {
+      "name": "user2",
+      "address": "10.0.0.3",
+      "privateKey": "4BRiuEEHmxfcbXoWPP9/sCFGTXouvMG8rLppK+LxtFQ=",
+      "publicKey": "lB+fCzblJNKBgUoTVqzTfnQzmSH5dG4mk+m2En8GJhU=",
+      "preSharedKey": "zqA8NKW+zYgdD/ZZLaEH8GgTV2lgaT9z4ljYD5eId/0=",
+      "createdAt": "2024-09-24T04:01:54.653Z",
+      "updatedAt": "2024-09-24T04:01:54.653Z",
+      "enabled": true
+    },
+    "7585da78-5e3f-47ea-9d32-079528d37b91": {
+      "name": "user3",
+      "address": "10.0.0.4",
+      "privateKey": "EDVfn2t5AcrN82uBsX1V8J77Sr8zEZVn7OuAF2R2hG8=",
+      "publicKey": "HgjxjW/fFQ7RWlCPKJxlCzNR0HpsssJHJBGFYWiks1Q=",
+      "preSharedKey": "IF533rQ0YjBl6XNeEmlky5R8Z9jw8Z+SkhGt4aiaZYA=",
+      "createdAt": "2024-09-24T04:02:01.065Z",
+      "updatedAt": "2024-09-24T04:02:01.065Z",
+      "enabled": true
+    },
+    "10796f77-7d0c-440c-a9ff-6de1cad91e23": {
+      "name": "user4",
+      "address": "10.0.0.5",
+      "privateKey": "QMFB/2nKh3rM6n+KsF3Ry3glx/iV+ZsAeFQ6mxtiFWI=",
+      "publicKey": "PrkRqpoxlGRtoLRZ2ryVWIT79hwT3ed/wQ5rt8UWBTo=",
+      "preSharedKey": "qYZVDZPzFc5oX/ETija5Ilu4u+2NIplHXnGWrixbIqs=",
+      "createdAt": "2024-09-24T04:02:07.387Z",
+      "updatedAt": "2024-09-24T04:02:07.387Z",
+      "enabled": true
+    },
+    "55ee86bd-9c95-4eb3-8a09-367bc85c564b": {
+      "name": "user5",
+      "address": "10.0.0.6",
+      "privateKey": "APK7i4hdQAFGta3pL0LUypx9twO2qmF7tk05xzQO3Gc=",
+      "publicKey": "B6I7wpcLYufCGU+8TJ54kPP3nDOOnUI/4RygDJTjkH8=",
+      "preSharedKey": "zKgKzMIVO5DwsA3XSa3aXRxHEYh36C5SLEcxVDtpItA=",
+      "createdAt": "2024-09-24T04:02:13.961Z",
+      "updatedAt": "2024-09-24T04:02:13.961Z",
+      "enabled": true
+    }
+  }
+}

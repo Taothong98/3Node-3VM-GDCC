@@ -1,0 +1,5 @@
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-3.00   sec  35.8 MBytes   100 Mbits/sec  0.000 ms  0/27408 (0%)  sender
+[  5]   0.00-8.37   sec  6.15 MBytes  6.16 Mbits/sec  3.926 ms  22523/27235 (83%)  receiver
+[  5]   0.00-3.00   sec  35.8 MBytes   100 Mbits/sec  0.000 ms  0/27405 (0%)  sender
+[  5]   0.00-8.38   sec  4.04 MBytes  4.04 Mbits/sec  1.107 ms  24304/27400 (89%)  receiver

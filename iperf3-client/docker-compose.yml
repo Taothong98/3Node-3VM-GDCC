@@ -1,0 +1,167 @@
+services:
+  iperfclient1:
+    build:
+      context: .
+      dockerfile: dev-IperfClient1/Dockerfile   
+    # image: felixfischer/wireguard:latest
+    container_name: IperfClient1
+    restart: unless-stopped    
+    # cpuset: '2,3,4,5,6'
+    volumes:
+      - ./dev-IperfClient1/etc/wireguard:/etc/wireguard  # ใช้ $(pwd) ใน docker-compose ให้ใช้ relative path
+      - ./iperf1.log:/home/iperf/iperf.log
+    ports:
+      - "55555:38945/udp"
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    tty: true
+    stdin_open: true  # เทียบเท่ากับ --interactive
+    networks:      
+      my_macvlan1:
+        ipv4_address: 172.21.11.51       
+  
+# sudo docker stop IperfClient1
+# sudo docker rm IperfClient1
+
+# docker exec -it IperfClient1 bash
+# iperf3 -c 192.168.110.100 -t 1
+# docker exec IperfClient1 iperf3 -c 192.168.110.100 -t 1
+# sudo docker exec IperfClient1 ping 172.16.10.200
+#######################################################
+  iperfclient2:
+    build:
+      context: .
+      dockerfile: dev-IperfClient2/Dockerfile   
+    container_name: IperfClient2
+    # cpuset: '2,3,4,5,6'
+    restart: unless-stopped    
+    volumes:
+      - ./dev-IperfClient2/etc/wireguard:/etc/wireguard  
+      - ./iperf2.log:/home/iperf/iperf.log
+    ports:
+      - "55556:38945/udp"
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    tty: true
+    stdin_open: true  # เทียบเท่ากับ --interactive
+    networks:      
+      my_macvlan2:
+        ipv4_address: 172.21.12.51          
+  
+# sudo docker stop IperfClient1
+# sudo docker rm IperfClient1
+
+# docker exec -it IperfClient bash
+# iperf3 -c 192.168.110.100 -t 1
+# docker exec IperfClient3 iperf3 -c 192.168.110.100 -t 1
+# sudo docker exec IperfClient3 ping 172.16.10.200
+#######################################################
+  iperfclient3:
+    build:
+      context: .
+      dockerfile: dev-IperfClient3/Dockerfile   
+    container_name: IperfClient3
+    # cpuset: '2,3,4,5,6'
+    restart: unless-stopped    
+    volumes:
+      - ./dev-IperfClient3/etc/wireguard:/etc/wireguard  
+      - ./iperf3.log:/home/iperf/iperf.log
+    ports:
+      - "55557:38945/udp"
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    tty: true
+    stdin_open: true  # เทียบเท่ากับ --interactive
+    networks:      
+      my_macvlan3:
+        ipv4_address: 172.21.13.51         
+  
+# sudo docker stop IperfClient1
+# sudo docker rm IperfClient1
+
+# docker exec -it IperfClient bash
+# iperf3 -c 192.168.110.100 -t 1
+# docker exec IperfClient2 iperf3 -c 192.168.110.100 -t 1
+# sudo docker exec IperfClient2 ping 172.16.10.200
+#######################################################
+  iperfclient4:
+    build:
+      context: .
+      dockerfile: dev-IperfClient4/Dockerfile   
+    container_name: IperfClient4
+    # cpuset: '2,3,4,5,6'
+    restart: unless-stopped    
+    volumes:
+      - ./dev-IperfClient4/etc/wireguard:/etc/wireguard  
+      - ./iperf4.log:/home/iperf/iperf.log
+    ports:
+      - "55558:38945/udp"
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    tty: true
+    stdin_open: true  # เทียบเท่ากับ --interactive
+    networks:      
+      my_macvlan4:
+        ipv4_address: 172.21.14.51 
+        
+
+# sudo docker exec IperfClient4 iperf3 -s &
+# sudo docker exec IperfClient5 iperf3 -s &
+# sudo docker exec IperfClient6 iperf3 -s &
+# ps aux | grep iperf3
+
+
+# sudo docker exec IperfClient2 ping 10.0.0.1
+
+# sudo docker exec IperfClient1 iperf3 -c 10.0.0.6 -t 1
+# sudo docker exec IperfClient2 iperf3 -c 10.0.0.7 -t 1
+# sudo docker exec IperfClient3 iperf3 -c 10.0.0.8 -t 1
+
+
+
+# docker exec -it IperfClient6 bash
+
+
+
+
+networks:
+
+  my_macvlan1:
+    driver: macvlan
+    driver_opts:
+      parent: enp4s4   # ระบุชื่อ interface ของ host ที่จะเชื่อมต่อ
+    ipam:
+      config:
+        - subnet: 172.21.11.0/24
+          # gateway: 172.16.10.101
+
+  my_macvlan2:
+    driver: macvlan
+    driver_opts:
+      parent: enp4s5   
+    ipam:
+      config:
+        - subnet: 172.21.12.0/24
+          # gateway: 172.16.10.101      
+          
+  my_macvlan3:
+    driver: macvlan
+    driver_opts:
+      parent: enp4s6  
+    ipam:
+      config:
+        - subnet: 172.21.13.0/24
+          # gateway: 172.16.10.101  
+                        
+  my_macvlan4:
+    driver: macvlan
+    driver_opts:
+      parent: enp4s7
+    ipam:
+      config:
+        - subnet: 172.21.14.0/24
+          # gateway: 172.16.10.101 

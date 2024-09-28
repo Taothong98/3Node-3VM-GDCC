@@ -1,0 +1,93 @@
+services:
+  iperfserver1:
+    build:
+      context: .
+      dockerfile: dev-IperfServer1/Dockerfile  
+    container_name: IperfServer1
+    restart: unless-stopped
+    ports:
+      - "8091:80"
+      - "5201:5201"
+    networks:      
+      my_macvlan1:
+        ipv4_address: 172.21.111.101           
+# sudo docker exec IperfServer1 ping 192.168.120.100
+  iperfserver2:
+    build:
+      context: .
+      dockerfile: dev-IperfServer2/Dockerfile  
+    container_name: IperfServer2
+    restart: unless-stopped
+    ports:
+      - "8092:80"
+      - "5201:5201"
+    networks:      
+      my_macvlan2:
+        ipv4_address: 172.21.112.101   
+
+# sudo docker exec IperfServer2 ping 192.168.130.100
+
+  iperfserver3:
+    build:
+      context: .
+      dockerfile: dev-IperfServer3/Dockerfile  
+    container_name: IperfServer3
+    restart: unless-stopped
+    ports:
+      - "8093:80"
+      - "5201:5201"
+    networks:      
+      my_macvlan3:
+        ipv4_address: 172.21.113.101                
+# sudo docker exec IperfServer3 ping 192.168.110.100
+
+  iperfserver4:
+    build:
+      context: .
+      dockerfile: dev-IperfServer4/Dockerfile  
+    container_name: IperfServer4
+    restart: unless-stopped
+    ports:
+      - "8094:80"
+      - "5201:5201"
+    networks:      
+      my_macvlan3:
+        ipv4_address: 172.21.114.101                
+# sudo docker exec IperfServer3 ping 192.168.110.100
+networks:
+
+  my_macvlan1:
+    driver: macvlan
+    driver_opts:
+      parent: enp4s4   # ระบุชื่อ interface ของ host ที่จะเชื่อมต่อ
+    ipam:
+      config:
+        - subnet: 172.21.111.0/24
+          # gateway: 172.16.10.101
+
+  my_macvlan2:
+    driver: macvlan
+    driver_opts:
+      parent: enp4s5   
+    ipam:
+      config:
+        - subnet: 172.21.112.0/24
+          # gateway: 172.16.10.101      
+          
+  my_macvlan3:
+    driver: macvlan
+    driver_opts:
+      parent: enp4s6  
+    ipam:
+      config:
+        - subnet: 172.21.113.0/24
+          # gateway: 172.16.10.101  
+                        
+  my_macvlan4:
+    driver: macvlan
+    driver_opts:
+      parent: enp4s7
+    ipam:
+      config:
+        - subnet: 172.21.114.0/24
+          # gateway: 172.16.10.101 

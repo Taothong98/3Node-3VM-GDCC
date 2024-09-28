@@ -1,0 +1,79 @@
+{
+  "server": {
+    "privateKey": "aA05XxW2HK6Tq4IuK2RAd7P0cHpysNytNF6GLAqFPFs=",
+    "publicKey": "gEBywlUmj0MCC+7teo8BmQNi/gcm/SFNkBFpBImjOFA=",
+    "address": "10.0.0.1"
+  },
+  "clients": {
+    "6ac9eef5-ebf9-4393-aff0-4db9b773945a": {
+      "name": "user1",
+      "address": "10.0.0.2",
+      "privateKey": "kDqcEvUiaV0v/F+vK312f0fRtC/BsFVyRu+vEtrGEnQ=",
+      "publicKey": "Ukn59BUTMbT+43ZUWofuB0TwG9PeDFOEa+zs0CcWEUM=",
+      "preSharedKey": "6MuIErhgThH2G9zF+9E8XuTdnXQw04lEoW9XofaN6N8=",
+      "createdAt": "2024-09-21T00:52:33.912Z",
+      "updatedAt": "2024-09-21T02:14:19.185Z",
+      "enabled": true
+    },
+    "cc8f1685-9dc5-49ee-ad7e-838b612f8e29": {
+      "name": "user2",
+      "address": "10.0.0.3",
+      "privateKey": "YOQrgV97KnesCoSwZDdIJJQiq7e5Qni9iL/iwNEAokU=",
+      "publicKey": "8rEOXLZF2fn1LS9vpqB7SacftTnjqo5MrrU/T8QZZV0=",
+      "preSharedKey": "ns9LOiR8Qn3DiikEs56OWyOH05xD3zbrjTVe2JzyuHI=",
+      "createdAt": "2024-09-21T00:52:44.852Z",
+      "updatedAt": "2024-09-21T00:52:44.852Z",
+      "enabled": true
+    },
+    "dc68fac7-358c-44a1-ab80-2391b48eef54": {
+      "name": "user3",
+      "address": "10.0.0.4",
+      "privateKey": "gLHmHk23SUtox0o3jEbH2XFvvr23/pXRtgdYxy/5o0I=",
+      "publicKey": "kmXMRrM3PvtMmV9yqS3rDA3h/zG1bPNyvYDNPk86HRI=",
+      "preSharedKey": "kFtBGzft24A0PPzOow8zjXFKWUwQoHJdyfHMCAUDJvo=",
+      "createdAt": "2024-09-21T00:52:51.717Z",
+      "updatedAt": "2024-09-21T00:52:51.717Z",
+      "enabled": true
+    },
+    "5d1ced84-cefd-46e4-b9e6-a6c26b343287": {
+      "name": "usertest",
+      "address": "10.0.0.5",
+      "privateKey": "mLmtGAT+jlbqvT9PanO4OootRrfiFCeWi/Qk5Y1ai2A=",
+      "publicKey": "I7dtpnQwe1euwvjolHpFswCMOKzIyjp6VUSz+9e2ZQE=",
+      "preSharedKey": "hjcmy6DXkYKu14Lz2+oBI1RIY30a9mVJRgmHSjl08I8=",
+      "createdAt": "2024-09-21T00:52:59.683Z",
+      "updatedAt": "2024-09-21T00:52:59.683Z",
+      "enabled": true
+    },
+    "598b33ca-0efe-4be1-995a-c35ec488b064": {
+      "name": "user4",
+      "address": "10.0.0.6",
+      "privateKey": "uNlLSkTgVpXEAfqr6q6kY90ijPDZ1TWK/cO+w2XLnk0=",
+      "publicKey": "k9O8HOMNM8mH752jsyO4EVpqB6ALdMXidgQf0qVpSmI=",
+      "preSharedKey": "p/cr05zPC7yvRFafg62as02jUv2fNU0ZDwLo46f/wQ0=",
+      "createdAt": "2024-09-21T16:23:58.331Z",
+      "updatedAt": "2024-09-21T16:53:04.607Z",
+      "enabled": true
+    },
+    "484f19c9-d981-4137-8c6d-5a2caccc2409": {
+      "name": "user5",
+      "address": "10.0.0.7",
+      "privateKey": "mHzWagfFGP8YsWEdkaPCU5BpsPINCafEGgZzPot4dm0=",
+      "publicKey": "ewLhoNrOAlyx8662mJlVpURXOPQ5mQ9dRg+lqrTx6Dw=",
+      "preSharedKey": "6vQXMyH453QaNETgNvxBZZS42hzYwmsstfjkIWMoQO0=",
+      "createdAt": "2024-09-21T16:24:04.572Z",
+      "updatedAt": "2024-09-21T16:24:04.572Z",
+      "enabled": true
+    },
+    "057819b0-e7f9-4246-9e55-d45dcfe2cf93": {
+      "name": "user6",
+      "address": "10.0.0.8",
+      "privateKey": "EOwhS/Lc0xaBPdatlyu7SZPSBuqpw1eVg1MkdQWGwlE=",
+      "publicKey": "NvCBQB4ECGrfDMDp/6ELRvgSqWirpWhKdN/VUZ7Njzg=",
+      "preSharedKey": "m9CiWrQMUDUsPa1+VIbM1E/Juj7vNwouKwSY6F5h/WU=",
+      "createdAt": "2024-09-21T16:24:12.823Z",
+      "updatedAt": "2024-09-21T16:24:12.823Z",
+      "enabled": true
+    }
+  }
+}
