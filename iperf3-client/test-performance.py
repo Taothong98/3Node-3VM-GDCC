@@ -369,7 +369,7 @@ def modify_num_core(new_num_core):
     print('start_modify_num_core')
     
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@192.168.1.236 'python3 /home/debian/vpnserver/scaling.py -core {new_num_core}'"
+    ssh_command = f"ssh debian@172.21.10.200 'python3 /home/debian/vpnserver/scaling.py -core {new_num_core}'"
     
     password = "debian"  # รหัสผ่านสำหรับ SSH
 
@@ -409,7 +409,7 @@ def modify_cpu_limit(new_cpu_limit):
     print('start_modify_cpu_limit')
     
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@192.168.1.236 'python3 /home/debian/vpnserver/scaling.py -cpu {new_cpu_limit}'"
+    ssh_command = f"ssh debian@172.21.10.200 'python3 /home/debian/vpnserver/scaling.py -cpu {new_cpu_limit}'"
     
     password = "debian"  # รหัสผ่านสำหรับ SSH
 
@@ -449,7 +449,7 @@ def modify_ram_limit(new_ram_limit):
     print('start_modify_ram_limit')
     
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@192.168.1.236 'python3 /home/debian/vpnserver/scaling.py -ram {new_ram_limit}'"
+    ssh_command = f"ssh debian@172.21.10.200 'python3 /home/debian/vpnserver/scaling.py -ram {new_ram_limit}'"
     
     password = "debian"  # รหัสผ่านสำหรับ SSH
 
@@ -488,7 +488,7 @@ def set_link_capacity(link_capacity):
     print('start_set_link_capacity')
     
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@192.168.1.236 'python3 /home/debian/vpnserver/setlinkcapacity.py --link_capacity {link_capacity}'"
+    ssh_command = f"ssh debian@172.21.10.200 'python3 /home/debian/vpnserver/setlinkcapacity.py --link_capacity {link_capacity}'"
     
     password = "debian"  # รหัสผ่านสำหรับ SSH
 
@@ -529,7 +529,7 @@ def getcpu(time_test):
     print('get_cpu_usage') 
     
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@192.168.1.236 'for i in {{1..{time_test}}}; do mpstat -P ALL 1 1 | grep \"all\" | awk \"NR==1 {{print \\$13}}\"; done'"
+    ssh_command = f"ssh debian@172.21.10.200 'for i in {{1..{time_test}}}; do mpstat -P ALL 1 1 | grep \"all\" | awk \"NR==1 {{print \\$13}}\"; done'"
     
     password = "debian"  # ใส่รหัสผ่านที่นี่
 
@@ -585,7 +585,7 @@ def getcpu(time_test):
 def get_memory_usage(time_test,):
     print('get_memory_usage') 
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@192.168.1.236 'for i in {{1..{time_test}}}; do free | awk \"/Mem/ {{printf(\\\"%.2f\\\\n\\\", \\$3/\\$2 * 100.0)}}\"; sleep 1; done'"
+    ssh_command = f"ssh debian@172.21.10.200 'for i in {{1..{time_test}}}; do free | awk \"/Mem/ {{printf(\\\"%.2f\\\\n\\\", \\$3/\\$2 * 100.0)}}\"; sleep 1; done'"
     
     password = "debian"
 
