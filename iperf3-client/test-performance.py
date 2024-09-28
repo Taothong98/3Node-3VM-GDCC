@@ -7,6 +7,7 @@ import re
 import threading
 import time
 import pexpect
+# sudo apt install python3-pexpect
 
 
 def main():
