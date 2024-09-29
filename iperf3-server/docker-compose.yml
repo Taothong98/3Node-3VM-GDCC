@@ -41,25 +41,25 @@ services:
         ipv4_address: 172.21.113.101                
 # sudo docker exec IperfServer3 ping 192.168.110.100
 
-  iperfserver4:
-    build:
-      context: .
-      dockerfile: dev-IperfServer4/Dockerfile  
-    container_name: IperfServer4
-    restart: unless-stopped
-    ports:
-      - "8094:80"
-      - "5201:5201"
-    networks:      
-      my_macvlan3:
-        ipv4_address: 172.21.114.101                
-# sudo docker exec IperfServer3 ping 192.168.110.100
+#   iperfserver4:
+#     build:
+#       context: .
+#       dockerfile: dev-IperfServer4/Dockerfile  
+#     container_name: IperfServer4
+#     restart: unless-stopped
+#     ports:
+#       - "8094:80"
+#       - "5201:5201"
+#     networks:      
+#       my_macvlan3:
+#         ipv4_address: 172.21.114.101                
+# # sudo docker exec IperfServer3 ping 192.168.110.100
 networks:
 
   my_macvlan1:
     driver: macvlan
     driver_opts:
-      parent: enp4s4   # ระบุชื่อ interface ของ host ที่จะเชื่อมต่อ
+      parent: lan1@if184   # ระบุชื่อ interface ของ host ที่จะเชื่อมต่อ
     ipam:
       config:
         - subnet: 172.21.111.0/24
@@ -68,7 +68,7 @@ networks:
   my_macvlan2:
     driver: macvlan
     driver_opts:
-      parent: enp4s5   
+      parent: lan2@if187   
     ipam:
       config:
         - subnet: 172.21.112.0/24
@@ -77,17 +77,17 @@ networks:
   my_macvlan3:
     driver: macvlan
     driver_opts:
-      parent: enp4s6  
+      parent: lan3@if190
     ipam:
       config:
         - subnet: 172.21.113.0/24
           # gateway: 172.16.10.101  
                         
-  my_macvlan4:
-    driver: macvlan
-    driver_opts:
-      parent: enp4s7
-    ipam:
-      config:
-        - subnet: 172.21.114.0/24
-          # gateway: 172.16.10.101 
+  # my_macvlan4:
+  #   driver: macvlan
+  #   driver_opts:
+  #     parent: enp4s7
+  #   ipam:
+  #     config:
+  #       - subnet: 172.21.114.0/24
+  #         # gateway: 172.16.10.101 

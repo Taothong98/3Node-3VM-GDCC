@@ -179,7 +179,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Test performance script")
     
     # =================== input for iperf test =================
-    parser.add_argument('-ip', '--ip_address', type=str, default="192.168.110.110", help='IP address to test')
+    parser.add_argument('-ip', '--ip_address', type=str, default="172.21.111.101", help='IP address to test')
     parser.add_argument('-t', '--time_test', type=str, default="1", help='Test duration in seconds')
     parser.add_argument('-b', '--bandwidth', type=str, default="1Gb", help='Bandwidth for iperf')
     parser.add_argument('-p', '--parallel', type=str, default="1", help='Number of parallel streams for iperf')
@@ -243,7 +243,7 @@ def iperf2(time_test, bandwidth2, parallel):
     # คำสั่งหลักสำหรับ iperf
     # sudo docker exec IperfClient1 iperf3 -c 10.0.0.7 -t 1
     # command = f"docker exec IperfClient2 iperf3 -c 10.0.0.7 -u -t {time_test} -b {bandwidth2} -P {parallel} > iperf2.log"
-    command = f"docker exec IperfClient3 iperf3 -c 192.168.120.110 -u -t {time_test} -b {bandwidth2} -P {parallel} > iperf3.log"
+    command = f"docker exec IperfClient3 iperf3 -c 172.21.112.101 -u -t {time_test} -b {bandwidth2} -P {parallel} > iperf3.log"
     
     
     # รันคำสั่ง iperf และรอให้เสร็จสิ้น
@@ -273,7 +273,7 @@ def iperf3(time_test, bandwidth3, parallel):
     # คำสั่งหลักสำหรับ iperf
     # sudo docker exec IperfClient1 iperf3 -c 10.0.0.6 -t 1
     # command = f"docker exec IperfClient3 iperf3 -c 10.0.0.8 -u -t {time_test} -b {bandwidth3} -P {parallel} > iperf3.log"
-    command = f"docker exec IperfClient3 iperf3 -c 192.168.130.110 -u -t {time_test} -b {bandwidth3} -P {parallel} > iperf3.log"
+    command = f"docker exec IperfClient3 iperf3 -c 172.21.113.101 -u -t {time_test} -b {bandwidth3} -P {parallel} > iperf3.log"
     
     # รันคำสั่ง iperf และรอให้เสร็จสิ้น
     result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -370,7 +370,7 @@ def modify_num_core(new_num_core):
     print('start_modify_num_core')
     
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@172.21.10.200 'python3 /home/debian/vpnserver/scaling.py -core {new_num_core}'"
+    ssh_command = f"ssh debian@10.10.10.1 'python3 /home/debian/vpnserver/scaling.py -core {new_num_core}'"
     
     password = "debian"  # รหัสผ่านสำหรับ SSH
 
@@ -410,7 +410,7 @@ def modify_cpu_limit(new_cpu_limit):
     print('start_modify_cpu_limit')
     
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@172.21.10.200 'python3 /home/debian/vpnserver/scaling.py -cpu {new_cpu_limit}'"
+    ssh_command = f"ssh debian@10.10.10.1 'python3 /home/debian/vpnserver/scaling.py -cpu {new_cpu_limit}'"
     
     password = "debian"  # รหัสผ่านสำหรับ SSH
 
@@ -450,7 +450,7 @@ def modify_ram_limit(new_ram_limit):
     print('start_modify_ram_limit')
     
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@172.21.10.200 'python3 /home/debian/vpnserver/scaling.py -ram {new_ram_limit}'"
+    ssh_command = f"ssh debian@10.10.10.1 'python3 /home/debian/vpnserver/scaling.py -ram {new_ram_limit}'"
     
     password = "debian"  # รหัสผ่านสำหรับ SSH
 
@@ -489,7 +489,7 @@ def set_link_capacity(link_capacity):
     print('start_set_link_capacity')
     
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@172.21.10.200 'python3 /home/debian/vpnserver/setlinkcapacity.py --link_capacity {link_capacity}'"
+    ssh_command = f"ssh debian@10.10.10.1 'python3 /home/debian/vpnserver/setlinkcapacity.py --link_capacity {link_capacity}'"
     
     password = "debian"  # รหัสผ่านสำหรับ SSH
 
@@ -530,7 +530,7 @@ def getcpu(time_test):
     print('get_cpu_usage') 
     
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@172.21.10.200 'for i in {{1..{time_test}}}; do mpstat -P ALL 1 1 | grep \"all\" | awk \"NR==1 {{print \\$13}}\"; done'"
+    ssh_command = f"ssh debian@10.10.10.1 'for i in {{1..{time_test}}}; do mpstat -P ALL 1 1 | grep \"all\" | awk \"NR==1 {{print \\$13}}\"; done'"
     
     password = "debian"  # ใส่รหัสผ่านที่นี่
 
@@ -586,7 +586,7 @@ def getcpu(time_test):
 def get_memory_usage(time_test,):
     print('get_memory_usage') 
     # คำสั่ง SSH ที่ต้องการรัน
-    ssh_command = f"ssh debian@172.21.10.200 'for i in {{1..{time_test}}}; do free | awk \"/Mem/ {{printf(\\\"%.2f\\\\n\\\", \\$3/\\$2 * 100.0)}}\"; sleep 1; done'"
+    ssh_command = f"ssh debian@10.10.10.1 'for i in {{1..{time_test}}}; do free | awk \"/Mem/ {{printf(\\\"%.2f\\\\n\\\", \\$3/\\$2 * 100.0)}}\"; sleep 1; done'"
     
     password = "debian"
 
@@ -661,7 +661,7 @@ def ping(ip_address,time_test):
     
 def ping_full_link(time_test):
     # command = f"docker exec IperfClient3 ping 10.0.0.8 -c {time_test}"
-    command = f"docker exec IperfClient3 ping 192.168.130.100 -c {time_test}"
+    command = f"docker exec IperfClient3 ping 172.21.113.101 -c {time_test}"
     
 
     # รันคำสั่ง ping
