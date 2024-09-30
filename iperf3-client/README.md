@@ -243,65 +243,105 @@ docker stats VPNserver
 
 
 
+sudo hostnamectl set-hostname vpn_server
+sudo hostnamectl set-hostname iperf_client
+sudo hostnamectl set-hostname iperf_server
 
 
+sudo nano /etc/network/interfaces
 
-####################### Configure the real-time scheduler ###########################
+---------------------------------------------------------- vpn server ------------------------------
 
+source /etc/network/interfaces.d/*
 
-
-  ขั้นตอนการคอมไพล์เคอร์เนลใน Debian****
-
-ติดตั้ง dependencies สำหรับการคอมไพล์เคอร์เนล: ก่อนอื่น คุณต้องติดตั้งแพ็คเกจที่จำเป็น:
-sudo apt update
-sudo apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev
-
-
-ดาวน์โหลดซอร์สโค้ดของเคอร์เนล: ดาวน์โหลดซอร์สเคอร์เนลจาก kernel.org หรือติดตั้งผ่านแพ็คเกจของ Debian:
-sudo apt install linux-source
-
-
-แตกไฟล์ซอร์สโค้ดของเคอร์เนล: ซอร์สโค้ดของเคอร์เนลมักจะถูกเก็บไว้ใน /usr/src/:
-cd /usr/src
-<!-- tar -xjf linux-source-<version>.tar.bz2 -->
-sudo tar -xvf linux-source-6.1.tar.xz
-tar -xvf patch-6.9.12.xz
-<!-- cd linux-source-<version>/ -->
-cd linux-source-6.1/
-
-ปรับแต่งการตั้งค่าเคอร์เนล: ใช้คำสั่ง make menuconfig เพื่อตั้งค่าเคอร์เนลและเปิดใช้งาน CONFIG_RT_GROUP_SCHED:
-make menuconfig
-
-ไปที่ General Setup > Cgroup Subsystems
-เปิดใช้งานตัวเลือก CONFIG_RT_GROUP_SCHED
-General Setup 
- [ ] Enable utilization clamping for RT/FAIR tasks 
-(20)   Number of supported utilization clamp buckets (NEW) 
-
-------------
-คอมไพล์และติดตั้งเคอร์เนล: เริ่มกระบวนการคอมไพล์เคอร์เนล:
-sudo make -j$(nproc)
-sudo make modules_install
-sudo make install
-
-อัปเดต GRUB และบูตเข้าสู่เคอร์เนลใหม่: อัปเดต GRUB เพื่อให้ระบบรู้จักเคอร์เนลใหม่:
-sudo update-grub
-
-
-หลังจากนั้นรีบูตเครื่องเข้าสู่เคอร์เนลใหม่:
-sudo reboot
-
-ใช้เคอร์เนล Real-Time ที่เตรียมไว้แล้ว (PREEMPT_RT Patch): คุณสามารถติดตั้งเคอร์เนลที่รองรับการประมวลผลแบบ Real-Time ที่ถูกคอมไพล์ไว้แล้ว เช่นเคอร์เนลที่มีการรวม PREEMPT_RT Patch ซึ่งรองรับ Real-Time Scheduling โดยเฉพาะ
-
-sudo apt update
-sudo apt install linux-image-rt-amd64
-
-พิจารณาใช้ Distribution ที่รองรับ Real-Time Scheduling โดยเฉพาะ:
-หากคุณต้องการการประมวลผลแบบ Real-Time อย่างชัดเจน การใช้ distribution เช่น Ubuntu Studio หรือ Debian RT ซึ่งมาพร้อมกับเคอร์เนลที่ปรับแต่งสำหรับ Real-Time Processing อาจเป็นทางเลือกที่ดี
-
-#####################################################################################
+auto lo
+iface lo inet loopback
+allow-hotplug ens18
+iface ens18 inet dhcp
+iface ens18 inet6 auto
+	
+auto ens19
+iface ens19 inet static
+    address 172.21.111.200
+    netmask 255.255.255.0  
+auto ens20
+iface ens20 inet static
+    address 172.21.112.200   
+    netmask 255.255.255.0   
+auto ens21
+iface ens21 inet static
+    address 172.21.113.200   
+    netmask 255.255.255.0   
+auto ens22
+iface ens22 inet static
+    address 172.21.11.200   
+    netmask 255.255.255.0   
+auto ens23
+iface ens23 inet static
+    address 172.21.12.200   
+    netmask 255.255.255.0   
+auto enp2s1
+iface enp2s1 inet static
+    address 172.21.13.200   
+    netmask 255.255.255.0   
+auto enp2s2
+iface enp2s2 inet static
+    address 10.10.10.1   
+    netmask 255.255.255.0   
 
 
+---------------------------------------------------------- iperf client ------------------------------
 
+source /etc/network/interfaces.d/*
 
+auto lo
+iface lo inet loopback
+allow-hotplug ens18
+iface ens18 inet dhcp
+iface ens18 inet6 auto
+	
+auto ens19
+iface ens19 inet static
+    address 172.21.11.50
+    netmask 255.255.255.0  
+auto ens20
+iface ens20 inet static
+    address 172.21.12.50   
+    netmask 255.255.255.0   
+auto ens21
+iface ens21 inet static
+    address 172.21.13.50   
+    netmask 255.255.255.0   
+auto ens22
+iface ens22 inet static
+    address 10.10.10.2 
+    netmask 255.255.255.0   
+ 
+
+---------------------------------------------------------- iperf server ------------------------------
+
+source /etc/network/interfaces.d/*
+
+auto lo
+iface lo inet loopback
+allow-hotplug ens18
+iface ens18 inet dhcp
+iface ens18 inet6 auto
+	
+auto ens20
+iface ens20 inet static
+    address 172.21.111.100
+    netmask 255.255.255.0  
+auto ens21
+iface ens21 inet static
+    address 172.21.112.100   
+    netmask 255.255.255.0   
+auto ens22
+iface ens22 inet static
+    address 172.21.113.100   
+    netmask 255.255.255.0   
+auto ens23
+iface ens23 inet static
+    address 10.10.10.3  
+    netmask 255.255.255.0   
 
